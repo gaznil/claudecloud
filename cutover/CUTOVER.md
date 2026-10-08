@@ -17,6 +17,8 @@ Copy into a new folder `instagram-automation/archive/old-system/` in Gaznil-work
 - From each builder clone root (untracked on purpose): `NEXT.md`, `PROGRESS.md`, `REPORT.md`, `tasks/`
   → `archive/old-system/<clone>/`.
 - `C:\Users\newuser\.claude\context\own\instagram-automation.md`.
+- Everything in `cutover/rescued/` of gaznil/claudecloud (old top-level SESSION.md, PLAN.13.md, PLAN.14.md
+  and the Superpowers workspace spec, recovered from git history) → `archive/old-system/rescued/`.
 - Any untracked discussion/notes files in `C:\Gaznil.instagram` that belong to Porotta (list them with
   `git status --short --untracked-files=all instagram-automation` and show the user before copying).
 - Never copy: `.env*`, SSH keys, `deploy/state/`, browser profiles, `node_modules`, `.next`.
