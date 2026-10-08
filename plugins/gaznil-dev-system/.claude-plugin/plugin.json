@@ -1,0 +1,7 @@
+{
+  "name": "gaznil-dev-system",
+  "version": "1.0.0",
+  "description": "Ship-side skills (launch, security, CI/CD, observability, browser testing, performance) that complete Superpowers for any project.",
+  "author": { "name": "Gaznil" },
+  "license": "MIT"
+}

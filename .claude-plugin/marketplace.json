@@ -1,0 +1,14 @@
+{
+  "name": "gaznil",
+  "owner": {
+    "name": "Gaznil"
+  },
+  "description": "Gaznil's standard development system for Claude Code.",
+  "plugins": [
+    {
+      "name": "gaznil-dev-system",
+      "source": "./plugins/gaznil-dev-system",
+      "description": "Ship-side skills (launch, security, CI/CD, observability, browser testing, performance) that complete Superpowers for any project."
+    }
+  ]
+}
