@@ -18,6 +18,8 @@ The standard setup for every new project. One workflow, no overlap.
 Do not also install the full `addyosmani/agent-skills` plugin: its spec, plan, build, TDD and
 review skills duplicate Superpowers and the two fight over the same requests.
 
+Moving an existing project in: see [cutover/CUTOVER.md](cutover/CUTOVER.md).
+
 Other agents (Codex, OmniRush, Antigravity) can use the same skills by reading
 `plugins/gaznil-dev-system/skills/<name>/SKILL.md` from a clone of this repo; point to it from the
 project's `AGENTS.md`.
