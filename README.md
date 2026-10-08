@@ -1,5 +1,7 @@
 # Gaznil dev system
 
+How the whole build system works (roles, flow, setup): see [SYSTEM.md](SYSTEM.md).
+
 The standard setup for every new project. One workflow, no overlap.
 
 | Layer | What | Install (in Claude Code) |
