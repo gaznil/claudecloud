@@ -30,7 +30,7 @@ files to keep in sync.
 | **OmniRush Sol** | Default builder for every issue; fixes its own gate failures | `--model gpt-6.1-sol --thinking low` |
 | **OmniRush Astra** | Escalation after 2 failed tries, or issues labelled `risky` (auth, webhooks, money, migrations) | `--thinking medium`, never unset, never max |
 | **Codex** | Automatic first review of every PR (comment on the PR). This month also: one-time infrastructure jobs (below) | Luna low for reviews; Sol low for `risky` PRs. Never Astra, never xhigh |
-| **Antigravity** | The window where you watch the app and iterate on look and feel live with its agent (own Gemini quota). Fallback builder when OmniRush is out | — |
+| **Antigravity CLI** | A second builder pool with its own Google quota, started by `gz` headless (`agy -p "…" --effort low --dangerously-skip-permissions --print-timeout 60m`, run inside the worktree). Best for screens/UI issues; OmniRush keeps engine issues. The Antigravity IDE stays the window where you watch the app | `--effort low` default, `medium` on retry |
 | **GitHub Actions** | CI on every PR, deploy on merge, production smoke test after deploy | Free tier |
 
 ## The flow of one feature
@@ -38,7 +38,7 @@ files to keep in sync.
 ```
 You + Claude: "I want X"  →  Superpowers brainstorm (questions)  →  plan
 Claude: gh issue create … (one issue per independent slice, label "ready")
-gz loop  (in WSL; up to 3 builders at once, never two on the same files)
+gz loop  (in WSL; up to 4 builders at once — 3 OmniRush + 1 Antigravity — never two on the same files)
   ├─ worktree ~/work/<repo>/wt/<issue> from origin/main, branch issue-<n>
   ├─ omnirush -p "<issue body + AGENTS.md rules>" --model gpt-6.1-sol --thinking low
   ├─ gates: typecheck · lint · tests for touched paths · empty-test guard · CI-env build
@@ -85,8 +85,12 @@ If Claude cannot write the checks, the issue is not ready.
 
 - One clone per product inside WSL (`~/work/<repo>`), not on `/mnt/c` — faster builds, no CRLF,
   no path mangling. Builders use `git worktree` (shared history), removed after each PR.
-- Max 3 live worktrees. `npm ci` reuses the shared npm cache.
-- If C: is small, move the WSL distro to another drive: `wsl --manage <distro> --move D:\wsl`.
+- Max 4 live worktrees. `npm ci` reuses the shared npm cache.
+- With only C:, free space once and keep it free: push and then delete the old `C:\Gaznil.astra*`
+  clones and their node_modules; delete `.next/` build folders; `npm cache verify`; clear old Claude
+  transcripts (`%USERPROFILE%\.claude\projects`, ~600 MB); then shrink the WSL disk
+  (`wsl --shutdown`, then `Optimize-VHD` or diskpart `compact vdisk` on its `ext4.vhdx`) —
+  WSL's disk never gives space back to C: on its own.
 - Keep screenshots, videos, zips and evidence out of git (`.gitignore`); attach them to the PR instead.
 
 ## Saving Claude credits
