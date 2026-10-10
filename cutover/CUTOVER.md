@@ -105,3 +105,12 @@ first tasks created for Phase B.
 6. Cleanup PR: AI notes, videos, logos and screenshots out of the code; README + ARCHITECTURE for a human.
 Then move the home into WSL, delete `C:\Gaznil.instagram`, and back to the product:
 Meta App Review submission and Razorpay.
+
+## PHASE C — the starter template (after Porotta is cleaned up)
+Turn Porotta's proven basics into a separate private repo `gaznil/gaznil-starter`, marked as a GitHub
+template: login (Better Auth), database (Prisma + Neon), Razorpay payments, emails, account and
+settings pages, Sentry, health endpoint + uptime check, CI, deploy-on-merge with rollback,
+`CLAUDE.md` + `AGENTS.md` + the `gz` script — with everything Instagram/Meta removed. A new app
+= "new app from the starter" → Claude copies the template and the first tasks are only what makes
+that app special. Keep it in step with Porotta: when a basic improves in Porotta, the same task
+updates the starter.
