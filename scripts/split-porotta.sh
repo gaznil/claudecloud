@@ -15,7 +15,11 @@ git -C "$SRC" fetch origin "$BRANCH"
 [ "$(git -C "$SRC" rev-parse --is-shallow-repository)" = false ] || { echo "clone is shallow; fetch full history first"; exit 1; }
 SPLIT=$(git -C "$SRC" subtree split --prefix=instagram-automation FETCH_HEAD 2>/dev/null)
 
-rm -rf "$WORK"; git clone -q --no-local --no-checkout "$SRC" "$WORK"
+# The split commit is not reachable from any ref yet, so a plain clone would not carry it:
+# pin it under a temporary ref for the clone, then remove the ref again.
+git -C "$SRC" update-ref refs/heads/porotta-split-tmp "$SPLIT"
+rm -rf "$WORK"; git clone -q --no-local --no-checkout --single-branch --branch porotta-split-tmp "$SRC" "$WORK"
+git -C "$SRC" update-ref -d refs/heads/porotta-split-tmp
 git -C "$WORK" checkout -q -B main "$SPLIT"
 (cd "$WORK" && git filter-repo --force --refs main --path-glob 'scratch/chrome-profile*' --invert-paths)
 
