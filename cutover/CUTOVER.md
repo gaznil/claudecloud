@@ -72,7 +72,9 @@ workflow replaces deploy.ps1.)
   board + `gz`; no TASK/HEAD/NEXT/SESSION writes; status = the board. Move the old lane / NEXT UP /
   HEAD / credit-board rules into the history file. `ROADMAP.md` becomes read-only history with a
   first line pointing to the board.
-- `~\.claude\CLAUDE.md` project index row: same trigger words, same file.
+- `~\.claude\CLAUDE.md`: with the user's yes, replace it with the slim router in `cutover/global/CLAUDE.md`
+  (keep the old one as `CLAUDE.md.bak-<date>`), and move each removed section word for word as listed in
+  `cutover/global/MOVE-MAP.md` (new `context\builders.md`, `context\clients\README.md`, `machine.md`).
 - `~\.claude\context\machine.md`: Porotta now has its own repo (user decided 10 Oct 2026); the
   one-repo rule stays for the other projects.
 - `~\.claude\settings.json`: remove the duplicate obsidian SessionStart hook (it is listed twice)
