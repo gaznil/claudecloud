@@ -20,6 +20,18 @@ Phase A switches the home (one session). Phase B builds the self-running parts a
 4. Push every local-only commit: the 57 workspace commits (`git log --branches --not --remotes`) and
    the three `cutover/astra*` branches. Check: `git log --branches --not --remotes` is empty.
 
+**A1b. Nothing pending gets lost — make a list of every unfinished piece of work** and show it to
+the user before moving on:
+- uncommitted Codex changes (Codex cannot commit; check `git status` in `C:\Gaznil.instagram` AND
+  `C:\Gaznil.instagram-codex`) — commit them on their branch as-is, labelled "unreviewed";
+- builder work written but not yet reviewed (each astra clone's `REPORT.md` sections and commits not
+  yet marked ACCEPTED in the project log, e.g. H16 in Clone 1, H18 not started);
+- accepted but not deployed (everything after the last live tag, d32);
+- the queue: unstruck items in `ROADMAP.md` NEXT UP, `HEAD.md` QUEUE, PARKED FOR CLAUDE, and the
+  REMIND THE USER box in the context file.
+In A5 each item on this list becomes a task on the new board (unreviewed work = a PR or task
+"review <id>"), so the new system starts exactly where the old one stopped.
+
 **A2. Collect project files that live outside the project folder** into
 `C:\Gaznil.instagram\instagram-automation\archive\old-system\`, commit, push:
 - workspace root: `agents\codex.md`, `agents\project-instagram.md`, `agents\workflow.md`, `AGENTS.md`,
