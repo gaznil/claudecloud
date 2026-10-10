@@ -7,7 +7,9 @@ Phase A switches the home (one session). Phase B builds the self-running parts a
 ## PHASE A — move house (today)
 
 **A1. Save everything that is only on this PC.**
-1. No builder running: `wsl.exe -e pgrep -af omnirush` empty; no codex exec job running.
+1. Nothing else is working: no OmniRush (`wsl.exe -e pgrep -af omnirush` empty), no codex exec job,
+   and the Codex "head" chat in VS Code is told to stop (mark `HEAD.md` "ENDED <date>: replaced by the
+   new system"). Ask the user to close every other Claude/Codex/Antigravity chat until Phase A is done.
 2. In `C:\Gaznil.instagram`: commit the modified/untracked project files (CODEX-REPORT.md, CODEX-TASK.md,
    REPORT.md, ROADMAP.md, evidence/*, archive/reports/REPORT-H15.md, the staged FQ-127 audit doc).
 3. Astra clones: review or keep their unfinished work — in `C:\Gaznil.astra2` the untracked docs
@@ -52,6 +54,12 @@ workflow replaces deploy.ps1.)
 - `~\.claude\context\own\instagram-automation.md`: project folder = `C:\Gaznil.porotta`, repo
   gaznil/porotta, workflow = this system; move old STATUS to the history file (30 KB cap); remove
   the HetrixTools key line (user is rotating it).
+- In that same file, rewrite the RULES so every chat type follows the new system:
+  discuss chats save ideas to `DISCUSSION.md` as before, but a **confirmed** item becomes a **task**
+  (GitHub issue with checks, labelled Task/Bug/Feature) — not a ROADMAP NEXT UP line; "builder go" =
+  board + `gz`; no TASK/HEAD/NEXT/SESSION writes; status = the board. Move the old lane / NEXT UP /
+  HEAD / credit-board rules into the history file. `ROADMAP.md` becomes read-only history with a
+  first line pointing to the board.
 - `~\.claude\CLAUDE.md` project index row: same trigger words, same file.
 - `~\.claude\context\machine.md`: Porotta now has its own repo (user decided 10 Oct 2026); the
   one-repo rule stays for the other projects.
