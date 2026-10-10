@@ -1,54 +1,85 @@
-# Porotta cutover — move from Gaznil-workspace to gaznil/porotta
+# Porotta cutover — from Gaznil-workspace to gaznil/porotta
 
-Trigger: the user says **"do the Porotta cutover"**. Claude runs every step itself, on the user's PC,
-checks each result, and stops and reports if a check fails. Nothing here touches production.
+Trigger: **"do the Porotta cutover"**. Claude runs every step itself on the user's PC, checks each
+result, and stops and reports in one line if a check fails. The live app is never touched.
+Phase A switches the home (one session). Phase B builds the self-running parts as tasks.
 
-## 1. Stop and save (old system)
-1. Let running OmniRush/Codex tasks finish; confirm no builder runs (`wsl.exe -e pgrep -af omnirush` empty).
-2. In every builder clone (`C:\Gaznil.astra`, `astra2`, `astra3`): commit finished work and get it
-   reviewed/merged into `work/instagram-phase-5` the usual way, or push it as branch `cutover/<clone>`
-   to Gaznil-workspace. Check: `git status --short` clean in each clone.
-3. Push `work/instagram-phase-5`. Check: `git status` says up to date with origin.
+## PHASE A — move house (today)
 
-## 2. Collect project files that live outside the project folder or only on this PC
-Copy into a new folder `instagram-automation/archive/old-system/` in Gaznil-workspace, commit, push:
-- From the workspace root: `agents/codex.md`, `agents/project-instagram.md`, `agents/workflow.md`,
-  `AGENTS.md`, `WORKFLOW-SETUP.md`, `CODEX-REPORT.md`, `DEPLOY-REPORT-d23.md`, `hooks/`.
-- From each builder clone root (untracked on purpose): `NEXT.md`, `PROGRESS.md`, `REPORT.md`, `tasks/`
-  → `archive/old-system/<clone>/`.
-- `C:\Users\newuser\.claude\context\own\instagram-automation.md`.
-- Everything in `cutover/rescued/` of gaznil/claudecloud (old top-level SESSION.md, PLAN.13.md, PLAN.14.md
-  and the Superpowers workspace spec, recovered from git history) → `archive/old-system/rescued/`.
-- Any untracked discussion/notes files in `C:\Gaznil.instagram` that belong to Porotta (list them with
-  `git status --short --untracked-files=all instagram-automation` and show the user before copying).
-- Never copy: `.env*`, SSH keys, `deploy/state/`, browser profiles, `node_modules`, `.next`.
-Check: `git ls-files instagram-automation/archive/old-system | wc -l` > 0 and no file name contains `.env`.
+**A1. Save everything that is only on this PC.**
+1. No builder running: `wsl.exe -e pgrep -af omnirush` empty; no codex exec job running.
+2. In `C:\Gaznil.instagram`: commit the modified/untracked project files (CODEX-REPORT.md, CODEX-TASK.md,
+   REPORT.md, ROADMAP.md, evidence/*, archive/reports/REPORT-H15.md, the staged FQ-127 audit doc).
+3. Astra clones: review or keep their unfinished work — in `C:\Gaznil.astra2` the untracked docs
+   (FQ-127 x2, FQ-132, FQ-139) and the three QuickAutomation test files; in `C:\Gaznil.astra3`
+   docs/FQ-140-RESEARCH.md; in `C:\Gaznil.astra` `.b1-checks/`. Commit them on each clone's branch,
+   then fetch each clone's branch into `C:\Gaznil.instagram` as `cutover/astra`, `cutover/astra2`,
+   `cutover/astra3` (so they reach GitHub). Accepted work merges the usual way first.
+4. Push every local-only commit: the 57 workspace commits (`git log --branches --not --remotes`) and
+   the three `cutover/astra*` branches. Check: `git log --branches --not --remotes` is empty.
 
-## 3. Final sync into the new repo
+**A2. Collect project files that live outside the project folder** into
+`C:\Gaznil.instagram\instagram-automation\archive\old-system\`, commit, push:
+- workspace root: `agents\codex.md`, `agents\project-instagram.md`, `agents\workflow.md`, `AGENTS.md`,
+  `WORKFLOW-SETUP.md`, `CODEX-REPORT.md`, `DEPLOY-REPORT-d23.md`, `hooks\`
+- each astra clone root: `NEXT.md`, `PROGRESS.md`, `REPORT.md`, `tasks\` → `old-system\<clone>\`
+- `C:\Users\newuser\.claude\context\own\instagram-automation.md`, `instagram-automation-history.md`,
+  `porotta-prompts.md` (copies; originals stay) — remove the HetrixTools key line from the copies
+- everything in `cutover/rescued/` of gaznil/claudecloud → `old-system\rescued\`
+- never: `.env*`, `.neon`, keys, `deploy\state\`, browser profiles, node_modules, .next
+Check: no `.env` in `git ls-files instagram-automation/archive/old-system`.
+
+**A3. Final copy into the new repo.**
 `scripts/split-porotta.sh <Gaznil-workspace clone> <empty dir> https://github.com/gaznil/porotta`
-Check: script prints `split ok`, push is a fast-forward (it refuses anything else).
+(from Git Bash or WSL; needs `pip install git-filter-repo`). Check: prints `split ok`, push is a
+fast-forward (it refuses anything else).
 
-## 4. New home on the PC (inside WSL, not /mnt/c)
-`git clone https://github.com/gaznil/porotta ~/work/porotta`; copy `.env` from
-`C:\Gaznil.instagram\instagram-automation\.env` (never commit it); `npm ci && npx prisma generate`;
-run the gates. Check: tsc 0 errors, build succeeds.
+**A4. New home on the PC.** `git clone https://github.com/gaznil/porotta C:\Gaznil.porotta`; copy
+`.env`, the four `.env.*.local` files and `.neon` from `C:\Gaznil.instagram\instagram-automation\`
+(never commit them); `npm ci && npx prisma generate`; run the gates. Check: tsc 0 errors, build ok,
+`scripts\deploy.ps1 -DryRun` passes from the new folder.
+(Stays on C: for now because deploys run Windows tar/scp; it moves into WSL once Phase B's deploy
+workflow replaces deploy.ps1.)
 
-## 5. Make the new system the default
-On a branch `setup/rules` in the new repo, via PR:
-- Add `CLAUDE.md` and `AGENTS.md` from `cutover/porotta/` in gaznil/claudecloud.
-- Move `.github/workflows/ci.yml` from the old repo, with `working-directory` and the
-  `instagram-automation/` path prefixes removed.
-- Add `.gitattributes` (`* text=auto eol=lf`) and `scratch/` to `.gitignore`.
-Merge after CI is green. From now on any Claude session opened in `~/work/porotta` loads these rules.
+**A5. Install the new rules (PR `setup/rules`, merge when CI is green):**
+- `CLAUDE.md` and `AGENTS.md` from `cutover/porotta/` in gaznil/claudecloud
+- `.github/workflows/ci.yml` from the old repo with `working-directory` and the
+  `instagram-automation/` path prefixes removed
+- `.gitattributes` (`* text=auto eol=lf`); `scratch/` in `.gitignore`
+- labels Task, Bug, Feature, risky, needs-human, ready; a Project board To do → Building → Review → Live
 
-## 6. Close the old home
-In Gaznil-workspace: replace `instagram-automation/` contents' entry point with a `MOVED.md`
-("Porotta now lives in gaznil/porotta") and update `agents/project-instagram.md` + workspace
-`CLAUDE.md` to say the same, so no agent builds there again. Keep the old history; delete nothing.
-Remove the `C:\Gaznil.astra*` clones only after step 1 is verified (frees disk).
+**A6. Point everything at the new home.**
+- `~\.claude\context\own\instagram-automation.md`: project folder = `C:\Gaznil.porotta`, repo
+  gaznil/porotta, workflow = this system; move old STATUS to the history file (30 KB cap); remove
+  the HetrixTools key line (user is rotating it).
+- `~\.claude\CLAUDE.md` project index row: same trigger words, same file.
+- `~\.claude\context\machine.md`: Porotta now has its own repo (user decided 10 Oct 2026); the
+  one-repo rule stays for the other projects.
+- `~\.claude\settings.json`: remove the duplicate obsidian SessionStart hook (it is listed twice)
+  and the old one-off `scp ... d19` permission. Ask the user before editing settings (their rule).
+- `~\.codex\config.toml`: add `C:\Gaznil.porotta` to the projects / writable roots.
+- `sonnet-worker*.md`: replace PLAN.md / WORK.md / QUESTION.md with "the issue is your order;
+  report in your final message".
+- Old repo: `instagram-automation\MOVED.md` ("Porotta now lives in gaznil/porotta") and the same
+  line in `agents\project-instagram.md` and workspace `CLAUDE.md`. Delete nothing.
 
-## 7. First jobs in the new system (as Issues)
-1. Protect `main` (CI required, squash only). 2. Deploy-on-merge workflow with a `production`
-environment approval. 3. `gz` script. 4. Codex PR review. 5. Cleanup PR: move AI notes, videos,
-logos, screenshots out of the code. 6. README + ARCHITECTURE for a human developer.
-Then: Meta App Review submission and Razorpay.
+**A7. Free disk (only after A1–A4 checks passed).** Delete `C:\Gaznil.astra`, `astra2`, `astra3`,
+`C:\Gaznil.instagram-codex`; in `deploy\state\` keep only the live tag and the one before; clear
+`.next` folders. Report free space before and after. `C:\Gaznil.instagram` itself stays until
+Phase B is done.
+
+**A8. Report to the user:** what moved, commit hashes, free disk, anything skipped — and the
+first tasks created for Phase B.
+
+## PHASE B — build the self-running parts (Codex luna/sol low, one task each)
+1. Protect `main`: PR required, CI green required, squash merge.
+2. Deploy-on-merge workflow (GitHub Actions + server SSH secret): build, upload, swap, health + smoke
+   test, automatic rollback; migrations that delete/rewrite data wait for the user's yes in a
+   `production` environment. Then retire deploy.ps1.
+3. `gz` script: picks `ready` tasks, worktree per task, starts OmniRush (Sol low; Astra after two
+   failures), runs the gates, pushes, opens the PR, cleans up; phone notification when stuck.
+4. Codex review on every PR (luna low; sol low for `risky`); auto-merge safe PRs when green.
+5. Playwright smoke test of the main user flows (used after every deploy).
+6. Cleanup PR: AI notes, videos, logos and screenshots out of the code; README + ARCHITECTURE for a human.
+Then move the home into WSL, delete `C:\Gaznil.instagram`, and back to the product:
+Meta App Review submission and Razorpay.
