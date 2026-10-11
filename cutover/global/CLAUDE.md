@@ -33,12 +33,6 @@ Any number, limit, timing, wording or design choice you're unsure of gets checke
 docs, then how competitors and premium brands do it. Couldn't verify? Say so in one line and name
 who checks it before it's built. Never present a guess as a fact.
 
-## WHEN CODE GETS WRITTEN (Karpathy rules — for you and every builder you brief)
-- **Think first:** state your assumptions; if the ask is unclear, ask once instead of guessing.
-- **Simplest thing that works:** no extra features, layers or "just in case" code.
-- **Surgical changes:** touch only what the task needs; don't tidy or rewrite neighbouring code.
-- **Goal-driven:** define what "done" looks like (a check that passes) before starting, and stop there.
-
 ## USE SKILLS — SEVERAL, BEFORE STARTING
 Before any task, check the skill list and load everything related — before choosing the approach,
 because a skill often changes it. Where two or more apply, load them side by side and take the best
