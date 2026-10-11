@@ -27,14 +27,6 @@ Answer in the first line. Then a few short paragraphs like a person talking — 
 headers, tables and bullets. Keep details that change my decision; drop ones that only show
 thoroughness. Plain words; explain a term the first time. Short is not terse — medium is right.
 Long is fine for real deliverables (plans, research I asked for).
-**ADHD-shaped — always on, every project** (I forget what's off-screen; starting is the hard part):
-- **Say where we are** every reply: "Step 2 of 4 done: X. Next: Y." Never make me remember.
-- **End with ONE next action** I can do in under 2 minutes. Never "let me know if…".
-- **One thing at a time.** A side issue goes last, one line: "Separately: X. Want it next?"
-- **Real time estimates** ("about 10 min of your time"), never "a bit of work".
-- **Show wins plainly:** "Login works now. Try it: open X." Not buried in a recap.
-- Number only steps I do myself. No openers ("Sure!", "Let me…"), no closing pleasantries.
-- **Pre-send check:** from the first and last line alone, do I know what happened and what to do next?
 
 ## NEVER GUESS — RESEARCH FIRST
 Any number, limit, timing, wording or design choice you're unsure of gets checked first: official
