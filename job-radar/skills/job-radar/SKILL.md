@@ -47,7 +47,8 @@ Follow `references/onboarding.md`. In short:
 3. Run an ATS check on the master CV with `references/ats-cv.md` and fix formatting problems.
 4. Pick regions and sources with `references/regions.md` and `references/sources/*.md`.
 5. Ask the apply mode and daily limit (see `references/applying.md`).
-6. Check what tools they have: Claude in Chrome, Gmail connector, Drive. Tell them plainly what
+6. Check which connectors and apps they have (Indeed, LinkedIn, Gmail, Claude in Chrome, Drive)
+   and offer the missing ones one by one with `references/connectors.md`. Tell them plainly what
    that means: which applications you can submit yourself and which go to their one-click list.
 7. Offer the daily schedule from `references/scheduling.md`.
 8. Do a first run immediately so they see results today.
@@ -55,21 +56,26 @@ Follow `references/onboarding.md`. In short:
 ## Daily run
 
 1. **Load** profile, master CV and tracker.
-2. **Search** every source pack listed in the profile (`references/sources/`). Use the search
-   queries given there, with the time filter "last 24 hours" (first run: last 7 days).
-   If `site:` search returns nothing, open the source's listing page directly instead.
-3. **Open each result** and read the actual posting. Skip it if: there is no apply method, it
+2. **Check replies** (Gmail connected): search the inbox since the last run for emails from
+   companies in the tracker, or with words like interview, shortlisted, assessment, test link,
+   offer, regret, unfortunately. Update each tracker row (interview / assessment / offer /
+   rejected) and put interview dates, times, links and what to prepare at the top of the report.
+3. **Search** every source pack listed in the profile (`references/sources/`) and every job
+   connector the user has (Indeed, LinkedIn). Use the search queries given there, with the time
+   filter "last 24 hours" (first run: last 7 days). If `site:` search returns nothing, open the
+   source's listing page directly instead.
+4. **Open each result** and read the actual posting. Skip it if: there is no apply method, it
    is closed or past its last date, it is already in the tracker (same company + title, or same
    link), or it fails a hard filter in the profile (location, salary floor, visa, shift).
-4. **Scam check** every posting with `references/scam-filter.md`. Blocked postings go in the
+5. **Scam check** every posting with `references/scam-filter.md`. Blocked postings go in the
    report with the reason, never get applied to.
-5. **Score** each remaining posting 0–100 against the profile with the ATS keyword match in
+6. **Score** each remaining posting 0–100 against the profile with the ATS keyword match in
    `references/ats-cv.md` plus fit (experience level, location, salary). Keep the top matches
    at or above the profile's threshold (default 75), up to the daily limit.
-6. **Prepare** for each kept match: a tailored CV (ATS rules, never invent anything), a short
+7. **Prepare** for each kept match: a tailored CV (ATS rules, never invent anything), a short
    cover message, and answers to the posting's screening questions.
-7. **Apply** with `references/applying.md`, according to the apply mode.
-8. **Update** the tracker and send the report (`templates/daily-report.md`).
+8. **Apply** with `references/applying.md`, according to the apply mode.
+9. **Update** the tracker and send the report (`templates/daily-report.md`).
 
 ## Apply
 
@@ -89,6 +95,7 @@ polite follow-up email.
 - Never pay fees, share passport, Aadhaar, PAN or bank details, or reply to anyone asking for
   money. Never create accounts or accept terms on the user's behalf.
 - Never solve CAPTCHAs or bypass login, OTP or bot checks. Hand those to the user.
-- Never auto-apply on LinkedIn or Naukri. Prepare everything and put it in the one-click list.
+- Never auto-apply on LinkedIn or Naukri. For jobs found through Indeed, LinkedIn or any job
+  connector that can't apply, give the direct apply link, job details and the tailored CV.
 - Stay within the daily limit. Quality over volume: recruiters ignore mass-applied CVs.
 - If unsure whether to submit, don't. Put it in the one-click list with a note.

@@ -28,7 +28,7 @@ updated: YYYY-MM-DD
 - apply_mode: review_first                    # or full_auto
 - daily_limit: 10
 - score_threshold: 75
-- tools: gmail=yes, chrome=yes, drive=no
+- tools: indeed=yes, linkedin=no, gmail=yes, chrome=yes, drive=no
 - data_location: my-data/                     # or Drive folder "Job Radar" / Project files
 - language: English                           # or Malayalam
 - schedule: daily 07:00 IST, option A

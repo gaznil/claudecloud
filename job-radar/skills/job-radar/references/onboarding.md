@@ -33,8 +33,9 @@ writes in Malayalam. Skip anything already in their CV; confirm it instead.
     - **Review first (recommended to start):** I prepare everything, you reply "yes" or the
       numbers to send, then I submit.
 13. **Daily limit:** default 10 applications a day. Threshold: default 75/100.
-14. Which of these do you have? Claude in Chrome extension · Gmail connected · Google Drive
-    connected · paid Claude plan. (Explain what each one unlocks using `applying.md`.)
+14. Connectors: check which they have and offer the missing ones one by one (Indeed, LinkedIn,
+    Gmail, Claude in Chrome, Google Drive) using `connectors.md`. Also ask if they have a paid
+    plan (needed for daily scheduled runs).
 
 ## After the interview
 

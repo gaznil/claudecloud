@@ -11,6 +11,7 @@ single click for the user.
 | Gmail connected | Send email applications yourself ("send CV to hr@..."). |
 | Claude in Chrome | Fill and submit web forms in the user's own browser, upload the CV. |
 | Google Drive connected | Save tailored CVs and the tracker there; share CV links in emails. |
+| Indeed / LinkedIn connected | Search more jobs. Applying stays on their site: you give link + details + tailored CV. |
 
 ## Pick the channel for each job
 
@@ -31,8 +32,10 @@ single click for the user.
 3. **Login, OTP or CAPTCHA** (Naukri, Bayt, Naukrigulf, Workday accounts, government portals):
    fill what you can if the user is already logged in, then stop. Add it to the one-click list
    with "needs your login/OTP/CAPTCHA".
-4. **LinkedIn and Naukri:** never auto-apply (their rules ban automation and accounts get
-   restricted). Put the link, tailored CV and answers in the one-click list.
+4. **LinkedIn, Naukri, and jobs found through the Indeed or LinkedIn connectors:** never
+   auto-apply (their rules ban automation and accounts get restricted, and the connectors
+   can't submit). Put the direct apply link, job details, tailored CV, cover message and answers
+   in the one-click list (see `connectors.md`).
 5. **Walk-in interviews and job fairs:** add date, time, venue and what to bring to the report.
 
 ## Limits
