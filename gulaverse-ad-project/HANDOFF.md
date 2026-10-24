@@ -19,7 +19,7 @@ The client's ad (`gulaverse_creative.jpg`, 5:3) is placed onto real Kerala stree
 | 6 | IMG_9799 | **1 s → 5 s** (`trimmed_videos/clip6_rickshaw_trim_1080p.mp4`) | clip6_FINAL_first_frame.jpg | Auto-rickshaw rear hood, through a rainy windscreen | Rain drops on the glass |
 | 7 | IMG_9800 | 0 s | clip7_FINAL_first_frame.jpg | White billboard, dark rainy sky | Power line, tree branch, festive lights |
 | 8 | IMG_9809 | 0 s (the first ~1 s is out of focus, so trim it after generating) | clip8_FINAL_first_frame.jpg | LED screen (whole shot out of focus) | Bamboo stick |
-| 9 | IMG_9804 | 0 s | clip9_FINAL_first_frame.jpg | Big rooftop teaser board | — |
+| 9 | IMG_9804 | **1 s → end** (first frame matches at 1.0 s) | clip9_FINAL_first_frame.jpg | Big rooftop teaser board | — |
 
 The original clips are on the user's device (Kerala footage, IMG_xxxx.MOV).
 

@@ -2,7 +2,7 @@
 Per clip: source video → video input; `first_frames/clipN_FINAL_first_frame.jpg` → @Image1; `gulaverse_creative.jpg` → @Image2; 9:16, 1080p, same length as source. QC each result per HANDOFF.md step 5 (text + 7356235566).
 
 ## Clip 1
-- **Source video:** IMG_4483 from 0 s
+- **Source video:** source_1080p/clip1_IMG_4483.mp4
 - **@Image1:** first_frames/clip1_FINAL_first_frame.jpg
 
 ```
@@ -14,7 +14,7 @@ The ad is a real printed flex billboard: it stays rigidly locked to the board wi
 ```
 
 ## Clip 2
-- **Source video:** trimmed_videos/clip2_trim_5s.mp4
+- **Source video:** source_1080p/clip2_IMG_4485_5-9s.mp4
 - **@Image1:** first_frames/clip2_FINAL_first_frame.jpg
 
 ```
@@ -26,7 +26,7 @@ The ad is a real LED screen: it stays rigidly locked to the screen with no slidi
 ```
 
 ## Clip 3
-- **Source video:** IMG_4486 from 0 s
+- **Source video:** source_1080p/clip3_IMG_4486.mp4
 - **@Image1:** first_frames/clip3_FINAL_first_frame.jpg
 
 ```
@@ -38,7 +38,7 @@ The ad is a real printed flex billboard: it stays rigidly locked to the board wi
 ```
 
 ## Clip 4
-- **Source video:** trimmed_videos/clip4_trim_2s.mp4
+- **Source video:** source_1080p/clip4_IMG_4490_from2s.mp4
 - **@Image1:** first_frames/clip4_FINAL_first_frame.jpg
 
 ```
@@ -50,7 +50,7 @@ The ad is a real printed flex billboard: it stays rigidly locked to the board wi
 ```
 
 ## Clip 5
-- **Source video:** IMG_9796 from 0 s
+- **Source video:** source_1080p/clip5_IMG_9796.mp4
 - **@Image1:** first_frames/clip5_FINAL_first_frame.jpg
 
 ```
@@ -62,7 +62,7 @@ The ad is a real printed flex billboard: it stays rigidly locked to the board wi
 ```
 
 ## Clip 6
-- **Source video:** trimmed_videos/clip6_rickshaw_trim_1080p.mp4
+- **Source video:** source_1080p/clip6_IMG_9799_1-5s.mp4
 - **@Image1:** first_frames/clip6_FINAL_first_frame.jpg
 
 ```
@@ -74,7 +74,7 @@ The ad is a real vinyl banner on the rickshaw hood: it stays rigidly locked to t
 ```
 
 ## Clip 7
-- **Source video:** IMG_9800 from 0 s
+- **Source video:** source_1080p/clip7_IMG_9800.mp4
 - **@Image1:** first_frames/clip7_FINAL_first_frame.jpg
 
 ```
@@ -86,7 +86,7 @@ The ad is a real printed flex billboard: it stays rigidly locked to the board wi
 ```
 
 ## Clip 8
-- **Source video:** IMG_9809 from 0 s
+- **Source video:** source_1080p/clip8_IMG_9809.mp4
 - **@Image1:** first_frames/clip8_FINAL_first_frame.jpg
 - **Note:** After generating, trim the first ~1 s (out of focus).
 
@@ -99,7 +99,7 @@ The ad is a real LED screen: it stays rigidly locked to the screen with no slidi
 ```
 
 ## Clip 9
-- **Source video:** IMG_9804 from 0 s
+- **Source video:** source_1080p/clip9_IMG_9804_from1s.mp4
 - **@Image1:** first_frames/clip9_FINAL_first_frame.jpg
 
 ```
